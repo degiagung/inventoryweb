@@ -215,6 +215,43 @@
         }
     }
 
+    function submitForm() {
+        const bkkode    = $("input[name='bkkode']").val();
+        const tglkeluar = $("input[name='tglkeluar']").val();
+        const barang    = $("input[name='kdbarang']").val();
+        const tujuan    = $("input[name='tujuan']").val();
+        const jml       = $("input[name='jml']").val();
+        const harga     = $("input[name='harga']").val();
+        const total     = $("input[name='total']").val();
+        const pengiriman= $("select[name='pengiriman']").val();
+
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('barang-keluar.store') }}",
+            enctype: 'multipart/form-data',
+            data: {
+                bkkode : bkkode,
+                tglkeluar : tglkeluar,
+                barang : barang,
+                tujuan : tujuan,
+                jml : jml,
+                harga : harga,
+                total : total,
+                pengiriman : pengiriman,
+            },
+            success: function(data) {
+                $('#modaldemo8').modal('toggle');
+                swal({
+                    title: "Berhasil ditambah!",
+                    type: "success"
+                });
+                table.ajax.reload(null, false);
+                reset();
+
+            }
+        });
+    }
+
     function resetValid() {
         $('input').removeClass('is-invalid');
     }

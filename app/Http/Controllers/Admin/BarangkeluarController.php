@@ -125,7 +125,7 @@ class BarangkeluarController extends Controller
         //insert data
         BarangkeluarModel::create([
             'bk_tanggal' => $request->tglkeluar,
-            'bk_kode' => $request->bkkode,
+            'bk_kode'   => $request->bkkode,
             'barang_kode' => $request->barang,
             'bk_tujuan'   => $request->tujuan,
             'bk_jumlah'   => $request->jml,
